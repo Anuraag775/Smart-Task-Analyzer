@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Task Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header><h1>Smart Task Analyzer</h1></header>
+    <main>
+      <section class="left">
+        <h2>Input</h2>
+        <div class="mode">
+          <label><input type="radio" name="mode" value="form" checked> Single task</label>
+          <label><input type="radio" name="mode" value="bulk"> Bulk JSON</label>
+        </div>
+        <form id="task-form" onsubmit="return false;">
+          <input id="title" placeholder="Title" required />
+          <input id="due_date" type="date" />
+          <input id="estimated_hours" type="number" placeholder="Estimated hours" min="0" />
+          <input id="importance" type="number" placeholder="Importance (1-10)" min="1" max="10" />
+          <input id="dependencies" placeholder="Dependencies (comma-separated IDs)" />
+          <button id="add-task" type="button">Add task</button>
+        </form>
+        <textarea id="bulk" placeholder='Paste JSON array here'></textarea>
+        <div class="controls">
+          <label for="strategy">Strategy</label>
+          <select id="strategy">
+            <option value="smart">Smart Balance</option>
+            <option value="fast">Fastest Wins</option>
+            <option value="impact">High Impact</option>
+            <option value="deadline">Deadline Driven</option>
+          </select>
+          <button id="analyze">Analyze Tasks</button>
+          <span id="status"></span>
+        </div>
+        <h3>Current list</h3>
+        <pre id="task-list"></pre>
+      </section>
+      <section class="right">
+        <h2>Results</h2>
+        <div id="results"></div>
+      </section>
+    </main>
+    <footer><small>Local demo — Smart Task Analyzer</small></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
